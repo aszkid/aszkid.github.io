@@ -85,7 +85,5 @@ document.getElementById("stopForm").addEventListener("submit", (e) => {
 	sid.addEventListener("click", (e) => {
 		var stopId = e.target.getAttribute("data-stopid");
 		document.getElementById("stopId").value = stopId;
-		document.getElementById("stopForm").submit();
-		document.getElementById("stopForm").submit();
 	});
 });
