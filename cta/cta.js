@@ -2,7 +2,7 @@ function update(data) {
 	var cont = document.getElementById("arrivals");
 	var result = "";
 	var template = `
-	<div class="level arrival {{classes}}">
+	<div class="level arrival}">
 	  <div class="level-left">
 	    <div class="level-item">
 	      <p class="title">{{line}}</p>
@@ -24,11 +24,6 @@ function update(data) {
 			tmp = tmp.replace("{{line}}", a["line"]);
 			tmp = tmp.replace("{{time}}", a["time"]);
 			tmp = tmp.replace("{{to}}", a["to"]);
-
-			if (a["time"] === "APPROACHING") {
-				tmp = tmp.replace("{{classes}}", "arrival-approaching");
-			}
-
 			result += tmp;
 		});
 	}
@@ -61,7 +56,6 @@ function fetch(stopId) {
 	var req = new XMLHttpRequest();
 	req.addEventListener("load", reqListener);
 	req.open("GET", url);
-	//req.setRequestHeader("X-Requested-With", "bettercta.com");
 	req.send();
 
 	var arr = document.getElementById("arrivals");
