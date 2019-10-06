@@ -16,18 +16,22 @@ function update(data) {
 	  </div>
 	</div>
 	`;
-	data.forEach((a) => {
-		var tmp = template;
-		tmp = tmp.replace("{{line}}", a["line"]);
-		tmp = tmp.replace("{{time}}", a["time"]);
-		tmp = tmp.replace("{{to}}", a["to"]);
+	if (data.length == 0 ) {
+		result = "No scheduled buses.";
+	} else {
+		data.forEach((a) => {
+			var tmp = template;
+			tmp = tmp.replace("{{line}}", a["line"]);
+			tmp = tmp.replace("{{time}}", a["time"]);
+			tmp = tmp.replace("{{to}}", a["to"]);
 
-		if (a["time"] === "APPROACHING") {
-			tmp = tmp.replace("{{classes}}", "arrival-approaching");
-		}
+			if (a["time"] === "APPROACHING") {
+				tmp = tmp.replace("{{classes}}", "arrival-approaching");
+			}
 
-		result += tmp;
-	});
+			result += tmp;
+		});
+	}
 
 	cont.innerHTML = result;
 }
